@@ -26,4 +26,13 @@
     </ion-item>
   </ion-list>
 
+  <!-- Infinite Scroll is triggered, and calls loadPokemon
+       with the loadMore boolean set to true -->
+  <ion-infinite-scroll (ionInfinite)="loadPokemon(true, $event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
