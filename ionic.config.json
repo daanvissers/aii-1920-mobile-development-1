@@ -1,0 +1,7 @@
+{
+  "name": "go-rs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
