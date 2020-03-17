@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   pokemon = [];
   offset = 0;
 
-  @ViewChild(IonInfiniteScroll, null) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -21,12 +21,11 @@ export class HomePage implements OnInit {
   }
 
   loadPokemon(loadMore = false, event?) {
-
     // Load another 25 items
     if (loadMore)
       this.offset += 25;
 
-    this.pokemonService.getPokemon(this.offset)
+    this.pokemonService.getAll(this.offset)
       .subscribe(res => {
         console.log('result: ', res);
         // Append new Pokemon to existing array
@@ -41,4 +40,21 @@ export class HomePage implements OnInit {
       });
   }
 
+  onSearchChange(event) {
+    let value = event.detail.value;
+
+    // If Search bar is empty, return regular list
+    if(value == '') {
+      this.offset = 0;
+      this.loadPokemon();
+      return;
+    }
+
+    this.pokemonService.find(value).subscribe(res => {
+      this.pokemon = [res];
+    }, err => {
+      // When it errors, empty the array to show no results
+      this.pokemon = []
+    })
+  }
 }

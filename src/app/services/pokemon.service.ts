@@ -12,7 +12,22 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemon(offset = 0) {
+  get(id) {
+    return this.http.get(`${this.baseUrl}/pokemon/${id}`).pipe(
+      map(pokemon => {
+        // Get the sprite keys
+        let sprites = Object.keys(pokemon['images']);
+        console.log(sprites);
+        // Remap them
+        pokemon['images'] = sprites
+            .map(key => pokemon['sprites'][key])
+            .filter(img => img);
+        return pokemon;
+      })
+    )
+  }
+
+  getAll(offset = 0) {
     return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=25`).pipe(
       // Map so that it only returns the results needed
       map(result => {
@@ -28,6 +43,16 @@ export class PokemonService {
         })
       })
     );
+  }
+
+  find(index) {
+    return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(
+      map(pokemon => {
+        pokemon['image'] = this.getImage(pokemon['id']);
+        pokemon['number'] = pokemon['id'];
+        return pokemon;
+      })
+    )
   }
 
   getImage(index) {
