@@ -15,13 +15,22 @@ export class PokemonService {
   get(id) {
     return this.http.get(`${this.baseUrl}/pokemon/${id}`).pipe(
       map(pokemon => {
-        // Get the sprite keys
-        let sprites = Object.keys(pokemon['images']);
-        console.log(sprites);
-        // Remap them
+
+        // Array with sprite names, to remap and re-order them
+        const sprites = [
+          "front_default", "front_female", "front_shiny", "front_female_shiny",
+          "back_default", "back_female", "back_shiny", "back_female_shiny"
+        ];
+
+        // Remap them to a newly made 'images' property
         pokemon['images'] = sprites
             .map(key => pokemon['sprites'][key])
+            // Filters for URLs that are null
             .filter(img => img);
+
+        // Get descriptions
+        pokemon['descriptions'] = this.getDescriptions(id);
+
         return pokemon;
       })
     )
@@ -46,7 +55,7 @@ export class PokemonService {
   }
 
   find(index) {
-    return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(
+    return this.http.get(`${this.baseUrl}/pokemon/${index.toLowerCase()}`).pipe(
       map(pokemon => {
         pokemon['image'] = this.getImage(pokemon['id']);
         pokemon['number'] = pokemon['id'];
@@ -57,5 +66,18 @@ export class PokemonService {
 
   getImage(index) {
     return `${this.imageUrl}${index}.png`;
+  }
+
+  getDescriptions(index) {
+    return this.http.get(`${this.baseUrl}/pokemon-species/${index}`).pipe(
+      map(result => {
+        var res = result['flavor_text_entries']
+        // Filter Japanese and Korean descriptions out, so European remain
+        .filter(desc => desc.language.name == "en" || desc.language.name == "de"
+                    || desc.language.name == "it" || desc.language.name == "fr"
+                    || desc.language.name == "es");
+        return res;
+      })
+    );
   }
 }

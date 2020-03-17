@@ -1,9 +1,75 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{ pokemon?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div *ngIf="pokemon">
+    <ion-grid>
+
+      <!-- Pokemon Sprites -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <!-- Image slider -->
+          <ion-slides pager="true" [options]="options">
+            <ion-slide *ngFor="let sprite of pokemon.images">
+              <img [src]="sprite" style="height: 250px;">
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <!-- Pokémon Name -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <h2 class="ion-text-capitalize ion-text-center ion-no-margin">#{{ pokemon.id }}: {{ pokemon.name }}</h2>
+        </ion-col>
+      </ion-row>
+
+      <!-- Descriptions -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-slides pager="false">
+            <ion-slide *ngFor="let description of pokemon.descriptions | async">
+                <p class="pokemon-description ion-no-margin">{{ description.flavor_text }}
+                  <br><br>
+                  <span class="pokemon-version">Pokémon <span class="ion-text-capitalize">{{ description.version.name }}</span> Version</span>
+                </p>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <!-- Statistics -->
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-content>
+              <ion-list lines="full">
+                <ion-item>
+                  <ion-label text-wrap><b>Abilities:</b> <span *ngFor="let a of pokemon.abilities; let isLast = last"
+                      class="ion-text-capitalize">
+                      {{ a.ability.name }}{{ !isLast ? ',' : '' }}
+                    </span></ion-label>
+                </ion-item>
+                <ion-item *ngFor="let s of pokemon.stats" class="ion-text-capitalize">
+                  <ion-label slot="start"><b>{{ s.stat.name }}:</b></ion-label>
+                  <ion-label slot="end">
+                    {{ s.base_stat }}
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
 
 </ion-content>
