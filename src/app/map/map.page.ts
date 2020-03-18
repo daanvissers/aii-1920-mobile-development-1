@@ -27,6 +27,10 @@ export class MapPage implements OnInit {
     this.initializeMap();
   }
 
+  ionViewDidEnter() {
+    this.map.resize();
+  }
+
   initializeMap() {
     // Locate the user
     if (navigator.geolocation) {
