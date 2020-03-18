@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-details',
@@ -14,7 +15,9 @@ export class DetailsPage implements OnInit {
 
   };
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private route: ActivatedRoute,
+              private pokemonService: PokemonService,
+              private soundService: SoundService) { }
 
   ngOnInit() {
     // Get the home/:index parameter from the route url
@@ -24,6 +27,10 @@ export class DetailsPage implements OnInit {
       console.log(pokemon);
       this.pokemon = pokemon;
     });
+  }
+
+  play(index: number) {
+    this.soundService.playCry(index);
   }
 
 }

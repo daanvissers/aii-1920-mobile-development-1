@@ -27,7 +27,12 @@
       <!-- Pokémon Name -->
       <ion-row class="ion-justify-content-center">
         <ion-col size="12">
-          <h2 class="ion-text-capitalize ion-text-center ion-no-margin">#{{ pokemon.id }}: {{ pokemon.name }}</h2>
+          <h2 class="ion-text-capitalize ion-text-center ion-no-margin">#{{ pokemon.id }}: {{ pokemon.name }}
+            <ion-chip (click)="play(pokemon.id)">
+              <ion-icon name="play-circle-outline" color="primary"></ion-icon>
+              <ion-label>cry</ion-label>
+            </ion-chip>
+          </h2>
         </ion-col>
       </ion-row>
 
