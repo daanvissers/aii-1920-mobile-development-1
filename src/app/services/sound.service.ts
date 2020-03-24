@@ -8,15 +8,23 @@ export class SoundService {
 
   soundPath: string = "./assets/sounds/";
   player: Howl = null;
+  cry: Howl = null;
 
   constructor() { }
 
-  // Plays the cry from the given Pokémon number
-  playCry(index: number) {
-    this.player = new Howl({
+  setCry(index: number) {
+    this.cry = new Howl({
       src: [this.soundPath + "cries/" + index + ".wav"]
     });
-    this.player.play();
-    console.log(`[LOG] Playing cry from Pokémon with number ${index}...`);
+  }
+
+  // Plays the cry from the given Pokémon number
+  playCry() {
+    console.log(`[LOG] Playing cry from Pokémon...`);
+    this.cry.play();
+  }
+
+  getCurrentCryLength() : number {
+    return this.cry.duration();
   }
 }

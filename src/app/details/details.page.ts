@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { SoundService } from '../services/sound.service';
+import { VibrationService } from '../services/vibration.service';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +18,8 @@ export class DetailsPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private pokemonService: PokemonService,
-              private soundService: SoundService) { }
+              private soundService: SoundService,
+              private vibrate: VibrationService) { }
 
   ngOnInit() {
     // Get the home/:index parameter from the route url
@@ -26,11 +28,14 @@ export class DetailsPage implements OnInit {
     this.pokemonService.get(index).subscribe(pokemon => {
       console.log(pokemon);
       this.pokemon = pokemon;
+      // Set cry
+      this.soundService.setCry(this.pokemon.id);
     });
   }
 
-  play(index: number) {
-    this.soundService.playCry(index);
+  cry() {
+    this.vibrate.onCry();
+    this.soundService.playCry();
   }
 
 }
