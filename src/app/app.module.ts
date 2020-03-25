@@ -13,9 +13,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Network } from '@ionic-native/network/ngx';
 
+import { ItemsComponent } from './components/items/items.component';
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    ItemsComponent,
+  ],
+  entryComponents: [
+    ItemsComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

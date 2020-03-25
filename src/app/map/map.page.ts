@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { MapService } from '../services/map.service';
+import { PopoverController } from '@ionic/angular';
+import { ItemsComponent } from '../components/items/items.component';
 
 @Component({
   selector: 'app-map',
@@ -15,12 +17,11 @@ export class MapPage implements OnInit {
   lat = 51.26;
   lng = 5.28;
 
-  constructor(private mapService: MapService) {
-
-  }
+  constructor(private mapService: MapService,
+              public popoverController: PopoverController) { }
 
   ngOnInit() {
-
+    
   }
 
   ngAfterViewInit() {
@@ -82,6 +83,15 @@ export class MapPage implements OnInit {
     // Add marker to the map
     const marker = new mapboxgl.Marker(el)
         .setLngLat(coordinates).addTo(this.map);
+  }
+
+  async openBag(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ItemsComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 }

@@ -1,0 +1,54 @@
+<div class="items-bag">
+  <img class="pixelated" src="/assets/images/sprites/bag.png">
+</div>
+
+<!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+<ion-reorder-group
+    (ionItemReorder)="doReorder($event)"
+    disabled="false"
+    class="item-reorder-group">
+
+  <!-- Default reorder icon, end aligned items -->
+
+  <!-- For now, items are hard-coded -->
+  <ion-item class="ion-item">
+    <ion-label>
+      Potion
+      <span class="float-right">x20</span>
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Super Potion
+      <span class="float-right">x5</span>
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Poké Ball
+      <span class="float-right">x34</span>
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Great Ball
+      <span class="float-right">x2</span>
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Oran Berry
+      <span class="float-right">x10</span>
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+</ion-reorder-group>
