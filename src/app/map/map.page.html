@@ -1,3 +1,27 @@
 <ion-content no-bounce has-bouncing="false" forceOverscroll="false">
-    <div id='map' style='width: 100vw; height: 100vh;'></div>
+
+  <!-- Multiple FAB-->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="bottom-btn">
+    <ion-fab-button color="light">
+      <img class="pixelated" src="/assets/images/icons/bag.png">
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <img class="pixelated" src="/assets/images/icons/pokeball.png">
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button>
+        <img class="pixelated" src="/assets/images/icons/potion.png">
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button>
+        <img class="pixelated" src="/assets/images/icons/nearby.png">
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <!-- Map zone -->
+  <div id='map' style='width: 100vw; height: 100vh;'></div>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, IonContent } from '@ionic/angular';
 import { PokemonService } from '../services/pokemon.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
   pokemon = [];
   offset = 0;
 
+  @ViewChild(IonContent, {static: false}) ionContent: IonContent;
   @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
 
   constructor(private pokemonService: PokemonService) {}
@@ -27,14 +28,13 @@ export class HomePage implements OnInit {
 
     this.pokemonService.getAll(this.offset)
       .subscribe(res => {
-        console.log('result: ', res);
         // Append new Pokemon to existing array
         this.pokemon = [...this.pokemon, ...res];
 
         if (event)
           event.target.complete();
 
-        if (this.offset == 125) {
+        if (this.offset >= 375) {
           this.infiniteScroll.disabled = true;
         }
       });
@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
     let value = event.detail.value;
 
     // If Search bar is empty, return regular list
-    if(value == '') {
+    if(value == '' || value > 386) {
       this.offset = 0;
       this.loadPokemon();
       return;
@@ -56,5 +56,13 @@ export class HomePage implements OnInit {
       // When it errors, empty the array to show no results
       this.pokemon = []
     })
+  }
+
+  scrollToTop() {
+    this.ionContent.scrollToTop(300);
+  }
+
+  scrollToBottom() {
+    this.ionContent.scrollToBottom(300);
   }
 }
