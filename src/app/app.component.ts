@@ -17,7 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private network: Network,
-    private toast: ToastService
+    private toast: ToastService,
   ) {
     this.initializeApp();
   }
