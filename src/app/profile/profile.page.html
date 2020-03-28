@@ -6,18 +6,65 @@
 
 <ion-content>
 
-  <!-- Authentication form -->
-  <firebase-ui></firebase-ui>
+  <ion-grid *ngIf="!auth.auth">
+    <ion-row>
+      <!-- If not logged in... -->
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">Email</ion-label>
+          <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <h1 *ngIf="afAuth.auth.currentUser">
-    {{ afAuth.auth.currentUser.displayName }}
-    {{ afAuth.auth.currentUser.uid }}
-  </h1>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-button
-        *ngIf="afAuth.auth.currentUser"
-        (click)="signOut()">
-    Sign out
-  </ion-button>
+    <ion-row>
+      <!-- Log user in -->
+      <ion-button (click)="login(user)" color="primary">Log in</ion-button>
+
+      <!-- Redirect to register page -->
+      <ion-button (click)="register()" color="light">Register</ion-button>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="auth.auth">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">Username</ion-label>
+          <ion-input type="text" placeholder="Brandon" [(ngModel)]="profile.username"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col>
+        <img src="/assets/images/sprites/trainers/{{ selected[2] }}.png" class="trainer-sprite">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6 class="ion-text-center">{{ selected[0] }} {{ selected[1] }}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col>
+        <ion-button (click)="showMultiColumnPicker()">Choose Trainer</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center ion-text-center">
+      <ion-col>
+        <ion-button color="light">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
