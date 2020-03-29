@@ -40,18 +40,21 @@
       <ion-col>
         <ion-item>
           <ion-label position="fixed">Username</ion-label>
-          <ion-input type="text" placeholder="Brandon" [(ngModel)]="profile.username"></ion-input>
+          <ion-input type="text" [(ngModel)]="profile.username"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-text-center">
       <ion-col>
-        <img src="/assets/images/sprites/trainers/{{ selected[2] }}.png" class="trainer-sprite">
+        <img src="/assets/images/sprites/trainers/{{ profile.trainer | lowercase }}.png" class="trainer-sprite">
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h6 class="ion-text-center">{{ selected[0] }} {{ selected[1] }}</h6>
+        <h6 class="ion-text-center">
+          <input type="hidden" [(ngModel)]="profileData.title">{{ profile.title }}
+          <input type="hidden" [(ngModel)]="profileData.trainer">{{ profile.trainer | titlecase }}
+        </h6>
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-text-center">
@@ -62,7 +65,7 @@
 
     <ion-row class="ion-justify-content-center ion-text-center">
       <ion-col>
-        <ion-button color="light">Save</ion-button>
+        <ion-button color="light" (click)="createProfile()">Save</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

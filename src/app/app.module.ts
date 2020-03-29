@@ -18,6 +18,7 @@ import { ItemsComponent } from './components/items/items.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from 'src/environments/environment';
 
@@ -46,6 +47,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
