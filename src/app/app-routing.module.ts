@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'battlescreen/:index',
+    loadChildren: () => import('./pages/battlescreen/battlescreen.module').then( m => m.BattlescreenPageModule)
   }
 ];
 

@@ -3,14 +3,30 @@ import { Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 
+import { GeoJson } from '../map';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
 
-  constructor(private platform: Platform)
-  {
+  constructor(private platform: Platform,
+              private db: AngularFireDatabase) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
+  }
+
+  getMarkers(): any {
+    return this.db.list('/markers').valueChanges();
+  }
+
+  createMarker(data: GeoJson) {
+    return this.db.list('/markers').push(data);
+  }
+
+  removeMarker($key: string) {
+    return this.db.object(`/markers/${$key}`).remove();
   }
 
 }
