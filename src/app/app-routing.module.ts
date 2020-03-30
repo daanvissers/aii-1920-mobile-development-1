@@ -25,6 +25,10 @@ const routes: Routes = [
   { // Battle screen when clicked on a Pokémon
     path: 'battlescreen/:index',
     loadChildren: () => import('./pages/battlescreen/battlescreen.module').then( m => m.BattlescreenPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 
