@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll, IonContent } from '@ionic/angular';
-import { PokemonService } from '../services/pokemon.service';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'dex.page.html',
+  styleUrls: ['dex.page.scss'],
 })
-export class HomePage implements OnInit {
+export class DexPage implements OnInit {
 
   pokemon = [];
   offset = 0;

@@ -3,9 +3,8 @@ import { Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 
-import { GeoJson } from '../map';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { GeoJson } from '../interfaces/geometry';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +24,7 @@ export class MapService {
     return this.db.list('/markers').push(data);
   }
 
-  removeMarker($key: string) {
+  deleteMarker($key: string) {
     return this.db.object(`/markers/${$key}`).remove();
   }
 

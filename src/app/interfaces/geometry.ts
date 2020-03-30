@@ -1,11 +1,11 @@
-export interface IGeomitry {
+export interface IGeometry {
   type: string;
   coordinates: number[];
 }
 
 export interface IGeoJson {
   type: string;
-  geomitry: IGeomitry;
+  geometry: IGeometry;
   properties?: any;
   $key?: string;
 }
@@ -13,13 +13,13 @@ export interface IGeoJson {
 // Part of the GeoJson spec
 export class GeoJson implements IGeoJson {
   type = 'Feature';
-  geomitry: IGeomitry;
+  geometry: IGeometry;
 
   constructor(coordinates, public properties?) {
-    this.geomitry = {
+    this.geometry = {
       type: 'Point',
-      coordinates: coordinates
-    }
+      coordinates
+    };
   }
 }
 

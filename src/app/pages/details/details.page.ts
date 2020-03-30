@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokemonService } from '../services/pokemon.service';
-import { SoundService } from '../services/sound.service';
-import { VibrationService } from '../services/vibration.service';
+import { PokemonService } from '../../services/pokemon.service';
+import { SoundService } from '../../services/sound.service';
+import { VibrationService } from '../../services/vibration.service';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +22,7 @@ export class DetailsPage implements OnInit {
               private vibrate: VibrationService) { }
 
   ngOnInit() {
-    // Get the home/:index parameter from the route url
+    // Get the dex/:index parameter from the route url
     let index = this.route.snapshot.paramMap.get('index');
 
     this.pokemonService.get(index).subscribe(pokemon => {

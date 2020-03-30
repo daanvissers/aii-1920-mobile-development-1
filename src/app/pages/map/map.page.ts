@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { MapService } from '../services/map.service';
+import { MapService } from '../../services/map.service';
 import { PopoverController } from '@ionic/angular';
-import { ItemsComponent } from '../components/items/items.component';
-import { GeoJson } from '../map';
+import { ItemsComponent } from '../../components/items/items.component';
+import { GeoJson } from '../../interfaces/geometry';
 import { Router } from '@angular/router';
 
 @Component({
@@ -148,12 +148,12 @@ export class MapPage implements OnInit {
   }
 
   removeMarker(marker) {
-    this.mapService.removeMarker(marker.$key);
+    this.mapService.deleteMarker(marker.$key);
   }
 
   flyTo(data: GeoJson) {
     this.map.flyTo({
-      center: data.geomitry.coordinates
+      center: data.geometry.coordinates
     })
   }
 

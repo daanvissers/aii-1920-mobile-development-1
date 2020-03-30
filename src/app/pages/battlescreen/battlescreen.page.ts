@@ -15,7 +15,7 @@ export class BattlescreenPage implements OnInit {
               private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    // Get the home/:index parameter from the route url
+    // Get the dex/:index parameter from the route url
     let index = this.route.snapshot.paramMap.get('index');
 
     this.pokemonService.get(index).subscribe(pokemon => {

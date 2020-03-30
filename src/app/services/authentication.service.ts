@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User } from '../interfaces/user';
 import { ToastService } from './toast.service';
+
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,7 @@ export class AuthenticationService {
       console.log(result);
       this.subscribe();
       return result;
-    }
-    catch(e) {
+    } catch (e) {
       // Catch errors and show them in a toast to the user
       console.error(e);
       this.toast.presentToast(e, 3000);
@@ -35,8 +35,7 @@ export class AuthenticationService {
         user.email, user.password
       );
       console.log(result);
-    }
-    catch(e) {
+    } catch (e) {
       // Catch errors and show them in a toast to the user
       console.error(e);
       this.toast.presentToast(e, 3000);
@@ -47,6 +46,6 @@ export class AuthenticationService {
     this.afAuth.authState.subscribe(auth => {
       console.log(auth);
       this.auth = auth;
-    })
+    });
   }
 }

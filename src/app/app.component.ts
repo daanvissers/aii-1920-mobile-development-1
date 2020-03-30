@@ -29,14 +29,14 @@ export class AppComponent {
     });
 
     // Watch network for a disconnection
-    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+    const disconnectSubscription = this.network.onDisconnect().subscribe(() => {
       console.log('[ERR] Network was disconnected');
-      this.toast.presentToast("Network was disconnected...", 4000);
+      this.toast.presentToast('Network was disconnected...', 4000);
     });
 
     // Watch network for a connection
-    let connectSubscription = this.network.onConnect().subscribe(() => {
-      this.toast.presentToast("Network was reconnected!", 4000);
+    const connectSubscription = this.network.onConnect().subscribe(() => {
+      this.toast.presentToast('Network was reconnected!', 4000);
       // We just got a connection but we need to wait briefly
       // before we determine the connection type. Might need to wait.
       // prior to doing any api requests as well.

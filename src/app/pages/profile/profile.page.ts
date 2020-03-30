@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import { User } from '../interfaces/user';
+import { User } from '../../interfaces/user';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
-import { Profile } from '../interfaces/profile';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Profile } from '../../interfaces/profile';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
 import { Observable } from 'rxjs';
-import { ToastService } from '../services/toast.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-profile',

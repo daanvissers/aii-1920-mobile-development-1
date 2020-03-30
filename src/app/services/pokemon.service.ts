@@ -18,8 +18,8 @@ export class PokemonService {
 
         // Array with sprite names, to remap and re-order them
         const sprites = [
-          "front_default", "front_female", "front_shiny", "front_female_shiny",
-          "back_default", "back_female", "back_shiny", "back_female_shiny"
+          'front_default', 'front_female', 'front_shiny', 'front_female_shiny',
+          'back_default', 'back_female', 'back_shiny', 'back_female_shiny'
         ];
 
         // Remap them to a newly made 'images' property
@@ -33,7 +33,7 @@ export class PokemonService {
 
         return pokemon;
       })
-    )
+    );
   }
 
   getAll(offset = 0) {
@@ -61,7 +61,7 @@ export class PokemonService {
         pokemon['number'] = pokemon['id'];
         return pokemon;
       })
-    )
+    );
   }
 
   getImage(index) {
@@ -71,7 +71,7 @@ export class PokemonService {
   getDescriptions(index) {
     return this.http.get(`${this.baseUrl}/pokemon-species/${index}`).pipe(
       map(result => {
-        var res = result['flavor_text_entries']
+        const res = result['flavor_text_entries']
         // Filter Japanese and Korean descriptions out, so European remain
         .filter(desc => desc.language.name == "en" || desc.language.name == "de"
                     || desc.language.name == "it" || desc.language.name == "fr"

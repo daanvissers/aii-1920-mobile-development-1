@@ -2,35 +2,27 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '',
-    // Entry point of the app are the Tabs, further routing goes from there
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  { // Entry point of the app are the Tabs, further routing goes from there
+    path: '',
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
+  { // Dex-entry Details page
     path: 'tabs/dex/:index',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    loadChildren: () => import('./pages/details/details.module').then(m => m.DetailsPageModule)
   },
-  {
+  { // Geolocation map
     path: 'map',
-    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+    loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule)
   },
-  {
+  { // User's profile with login
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
   },
-  {
-    path: 'terms',
-    loadChildren: () => import('./pages/terms/terms.module').then( m => m.TermsPageModule)
-  },
-  {
-    path: 'privacy',
-    loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyPageModule)
-  },
-  {
+  { // Register page
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
-  {
+  { // Battle screen when clicked on a Pokémon
     path: 'battlescreen/:index',
     loadChildren: () => import('./pages/battlescreen/battlescreen.module').then( m => m.BattlescreenPageModule)
   }
