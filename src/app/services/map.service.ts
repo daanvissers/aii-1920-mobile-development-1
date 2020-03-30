@@ -11,6 +11,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class MapService {
 
+  currentMarker: any;
+
   constructor(private platform: Platform,
               private db: AngularFireDatabase) {
     mapboxgl.accessToken = environment.mapbox.accessToken;

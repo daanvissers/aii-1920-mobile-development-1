@@ -23,13 +23,13 @@ export class PokemonService {
         ];
 
         // Remap them to a newly made 'images' property
-        pokemon['images'] = sprites
-            .map(key => pokemon['sprites'][key])
+        pokemon.images = sprites
+            .map(key => pokemon.sprites[key])
             // Filters for URLs that are null
             .filter(img => img);
 
         // Get descriptions
-        pokemon['descriptions'] = this.getDescriptions(id);
+        pokemon.descriptions = this.getDescriptions(id);
 
         return pokemon;
       })
@@ -40,7 +40,7 @@ export class PokemonService {
     return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=25`).pipe(
       // Map so that it only returns the results needed
       map(result => {
-        return result['results'];
+        return result.results;
       }),
       // Map the result to include images
       map(pokemons => {
@@ -49,7 +49,7 @@ export class PokemonService {
           pokemon.image = this.getImage(index + offset + 1);
           pokemon.number = index + offset + 1;
           return pokemon;
-        })
+        });
       })
     );
   }
@@ -57,8 +57,8 @@ export class PokemonService {
   find(index) {
     return this.http.get(`${this.baseUrl}/pokemon/${index.toLowerCase()}`).pipe(
       map(pokemon => {
-        pokemon['image'] = this.getImage(pokemon['id']);
-        pokemon['number'] = pokemon['id'];
+        pokemon.image = this.getImage(pokemon.id);
+        pokemon.number = pokemon.id;
         return pokemon;
       })
     );
@@ -71,13 +71,27 @@ export class PokemonService {
   getDescriptions(index) {
     return this.http.get(`${this.baseUrl}/pokemon-species/${index}`).pipe(
       map(result => {
-        const res = result['flavor_text_entries']
+        const res = result.flavor_text_entries
         // Filter Japanese and Korean descriptions out, so European remain
-        .filter(desc => desc.language.name == "en" || desc.language.name == "de"
-                    || desc.language.name == "it" || desc.language.name == "fr"
-                    || desc.language.name == "es");
+        .filter(desc => desc.language.name == 'en' || desc.language.name == 'de'
+                    || desc.language.name == 'it' || desc.language.name == 'fr'
+                    || desc.language.name == 'es');
         return res;
       })
     );
   }
+
+    // Takes an array of numbers[] and returns a set of Pokémon
+    // Currently not an observable
+    getMultiple(res: unknown[]) {
+      const collection: any[] = [];
+      res.forEach(val => {
+          // console.log('Getting ' + val);
+          this.get(val).subscribe(value => {
+              // console.log('Got' + value['name']);
+              collection.push(value);
+          });
+      });
+      return collection;
+    }
 }

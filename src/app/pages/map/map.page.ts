@@ -5,6 +5,7 @@ import { PopoverController } from '@ionic/angular';
 import { ItemsComponent } from '../../components/items/items.component';
 import { GeoJson } from '../../interfaces/geometry';
 import { Router } from '@angular/router';
+import { BoxComponent } from '../../components/box/box.component';
 
 @Component({
   selector: 'app-map',
@@ -29,7 +30,7 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
     this.markers = this.mapService.getMarkers();
-    console.log(this.markers);
+    // console.log(this.markers);
     this.initializeMap();
   }
 
@@ -48,9 +49,9 @@ export class MapPage implements OnInit {
           center: [this.lng, this.lat]
         });
 
-        let coordinates = [this.lng, this.lat];
-        console.log("Player Coordinates: " + coordinates);
-        this.addMarker(coordinates, "/assets/images/player/boy.png");
+        const coordinates = [this.lng, this.lat];
+        // console.log("Player Coordinates: " + coordinates);
+        this.addMarker(coordinates, '/assets/images/player/boy.png');
       });
     }
 
@@ -132,8 +133,8 @@ export class MapPage implements OnInit {
     //     }
     // ).setHTML(html); // You can set any valid HTML.
 
-    el.addEventListener('click', () =>
-    {
+    // Add Marker data and onclick
+    el.addEventListener('click', () => {
       this.router.navigate(['/battlescreen/' + id]);
     });
 
@@ -163,4 +164,12 @@ export class MapPage implements OnInit {
     return await popover.present();
   }
 
+  async openBox(ev: any) {
+    const popover = await this.popoverController.create({
+      component: BoxComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
 }

@@ -15,6 +15,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { Network } from '@ionic-native/network/ngx';
 
 import { ItemsComponent } from './components/items/items.component';
+import { BoxComponent } from './components/box/box.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -36,9 +37,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [
     AppComponent,
     ItemsComponent,
+    BoxComponent
   ],
   entryComponents: [
     ItemsComponent,
+    BoxComponent
   ],
   imports: [
     BrowserModule,
