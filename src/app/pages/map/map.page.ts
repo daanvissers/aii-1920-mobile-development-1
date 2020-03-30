@@ -33,9 +33,6 @@ export class MapPage implements OnInit {
     this.initializeMap();
   }
 
-  ngAfterViewInit() {
-  }
-
   ionViewDidEnter() {
     this.map.resize();
   }

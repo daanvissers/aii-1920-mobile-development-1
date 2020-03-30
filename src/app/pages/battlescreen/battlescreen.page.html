@@ -1,3 +1,38 @@
+<ion-header>
+  <ion-toolbar color="danger" class="ion-text-center">
+    <ion-title class="ion-text-capitalize">Pokémon Battle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <p *ngIf="pokemon">Wild {{ pokemon.name | titlecase }}!</p>
+  <ion-grid>
+    <!-- Sprite -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="8">
+        <ion-card>
+          <img class="pokemon-sprite" *ngIf="pokemon" [src]="pokemon.images[0]" alt="" width="100%">
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+    <!-- Name, etc -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="8">
+        <p class="ion-text-center" *ngIf="pokemon">Wild {{ pokemon.name | titlecase }} appeared!</p>
+        <p class="ion-text-center">What will you do?</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Buttons -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-button color="danger" [routerLink]="['/tabs/map']">Flee</ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button color="success" (click)="catch()">Catch</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

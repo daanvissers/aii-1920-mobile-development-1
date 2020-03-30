@@ -14,6 +14,10 @@ export class AuthenticationService {
 
   auth: any;
 
+  isAuthenticated(): boolean {
+    return this.auth != null;
+  }
+
   async login(user: User) {
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(
