@@ -8,5 +8,18 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item>
+      <ion-toggle color="primary" slot="end" [(ngModel)]="place" (ionChange)="updateSettings('place', place)"></ion-toggle>
+      <p>Place new markers on map</p>
+    </ion-item>
+    <ion-item>
+      <ion-toggle color="primary" slot="end" [(ngModel)]="hitboxes" (ionChange)="updateSettings('hitboxes', hitboxes)"></ion-toggle>
+      <p>Show hitboxes on map</p>
+    </ion-item>
+    <ion-item>
+      <ion-toggle color="primary" slot="end" [(ngModel)]="interaction" (ionChange)="updateSettings('interaction', interaction)"></ion-toggle>
+      <p>Interaction with map</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
