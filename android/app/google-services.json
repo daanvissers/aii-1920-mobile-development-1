@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5271801417",
+    "firebase_url": "https://go-rs-99e2b.firebaseio.com",
+    "project_id": "go-rs-99e2b",
+    "storage_bucket": "go-rs-99e2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5271801417:android:2bee905ae3cd6c2ffc3998",
+        "android_client_info": {
+          "package_name": "com.daanvissers.pogors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5271801417-1n2qhdtkefhpg403a5hik471gu2b43qr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTMxOpNqs7T8KNkzVY_7g1T_AQuYFjV7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5271801417-1n2qhdtkefhpg403a5hik471gu2b43qr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

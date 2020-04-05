@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "io.ionic.starter"
+        applicationId "com.daanvissers.pogors"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -41,7 +42,9 @@ apply from: 'capacitor.build.gradle'
 
 try {
     def servicesJSON = file('google-services.json')
+
     if (servicesJSON.text) {
+        logger.warn("Found google-services.json")
         apply plugin: 'com.google.gms.google-services'
     }
 } catch(Exception e) {

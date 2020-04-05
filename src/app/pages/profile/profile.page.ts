@@ -9,6 +9,7 @@ import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
 import { Observable } from 'rxjs';
 import { ToastService } from '../../services/toast.service';
+import {PushNotificationService} from '../../services/push-notification.service';
 
 @Component({
   selector: 'app-profile',
@@ -46,9 +47,15 @@ export class ProfilePage implements OnInit {
               private router: Router,
               private auth: AuthenticationService,
               private picker: PickerController,
-              private toast: ToastService) { }
+              private toast: ToastService,
+              private push: PushNotificationService) { }
 
   ngOnInit() {
+  }
+
+  enablePush() {
+    // Enable the listeners for Push Notifications
+    this.push.enable();
   }
 
   async login() {

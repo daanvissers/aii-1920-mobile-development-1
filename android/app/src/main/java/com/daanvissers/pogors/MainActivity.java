@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.daanvissers.pogors;
 
 import android.os.Bundle;
 
