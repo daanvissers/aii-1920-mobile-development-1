@@ -41,6 +41,16 @@ export class MapPage implements OnInit {
     this.initializeMap();
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.initializeMap();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
   ionViewDidEnter() {
     this.map.resize();
   }

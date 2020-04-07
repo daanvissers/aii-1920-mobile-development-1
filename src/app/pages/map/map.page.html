@@ -1,5 +1,9 @@
 <ion-content no-bounce has-bouncing="false" forceOverscroll="false">
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <!-- Multiple FAB-->
   <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="bottom-btn">
     <ion-fab-button color="light">
