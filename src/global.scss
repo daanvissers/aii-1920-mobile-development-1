@@ -25,4 +25,17 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* Firebase related imports */
 @import '~firebaseui/dist/firebaseui.css';
+
+/* Custom fonts */
+@import "theme/fonts.scss";
+.rs-font { font-family: "Power Red and Blue", serif; }
+.fl-font { font-family: "Power Red and Green", serif; }
+
+.fl-title {
+  font-size: 24px;
+  font-family: "Power Red and Green", serif;
+}
+
+

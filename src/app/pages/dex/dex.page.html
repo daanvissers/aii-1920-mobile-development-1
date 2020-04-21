@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title class="fl-title">
       Pokédex
     </ion-title>
   </ion-toolbar>
@@ -42,7 +42,7 @@
         <img [src]="mon.image" style="background: #f2f2f2;">
       </ion-avatar>
 
-      <ion-label class="ion-text-capitalize">
+      <ion-label class="ion-text-capitalize fl-font">
         <h2>{{ mon.name }}</h2>
         <p>Number: {{ mon.number }}</p>
       </ion-label>

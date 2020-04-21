@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-capitalize">{{ pokemon?.name }}</ion-title>
+    <ion-title class="ion-text-capitalize fl-font">{{ pokemon?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,7 +27,7 @@
       <!-- Pokémon Name -->
       <ion-row class="ion-justify-content-center">
         <ion-col size="12">
-          <h2 class="ion-text-capitalize ion-text-center ion-no-margin">#{{ pokemon.id }}: {{ pokemon.name }}
+          <h2 class="ion-text-capitalize ion-text-center ion-no-margin fl-font">#{{ pokemon.id }}: {{ pokemon.name }}
             <ion-chip (click)="cry()">
               <ion-icon name="play-circle-outline" color="primary"></ion-icon>
               <ion-label>cry</ion-label>

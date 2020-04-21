@@ -82,7 +82,6 @@ export class PokemonService {
     }
 
     // Takes an array of numbers[] and returns a set of Pokémon
-    // Currently not an observable
     getMultiple(res: unknown[]) {
       const collection: any[] = [];
       res.forEach(val => {
